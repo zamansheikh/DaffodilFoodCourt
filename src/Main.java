@@ -3,27 +3,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         boolean repeat = true;
+        Scanner sc = new Scanner(System.in);
         while(repeat){
             FoodCourtLogo.paste();
             Statistics.show();
             MainMenu.paste();
-            int choice = 0;
-            Scanner sc = new Scanner(System.in);
+            int choice = -1;
             choice = sc.nextInt();
             switch(choice){
                 case 1:
-                    //feature 1
+                    MainMenu.control(1);
                     break;
                 case 2:
-                    //feature 2
+                    MainMenu.control(2);
                     break;
                 case 3:
-                    //feature 3
+                    MainMenu.control(3);
                     break;
                 case 4:
-                    //feature 4
+                    MainMenu.control(4);
                     break;
-                case 5:
+                case 0:
                     repeat = false;
                     break;
                 default:
@@ -32,6 +32,7 @@ public class Main {
             }
 
         }
+        sc.close();
 
     }
 }
