@@ -17,7 +17,7 @@ public class FoodCourtLogo {
         System.out.println("/___,' \\__,_|_| |_|  \\___/ \\__,_|_|_|___\\/   \\___/ \\___/ \\__,_\\____/\\___/ \\__,_|_|   \\__|");
         System.out.println("                                   |_____|                                               ");
         System.out.println("===========================================================================================");
-        System.out.println(" Now Time: " + time  + "                                         Date: " + day);
+        System.out.println(" Now Time: " + time  + "                                       Date: " + day);
         System.out.println("===========================================================================================");
     }
     
