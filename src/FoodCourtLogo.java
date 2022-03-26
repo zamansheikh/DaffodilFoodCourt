@@ -5,7 +5,7 @@ import java.util.Date;
 public class FoodCourtLogo {
     public static void paste(){
         Date date = Calendar.getInstance().getTime();
-        DateFormat timeView = new SimpleDateFormat("hh:mm:ss a");
+        DateFormat timeView = new SimpleDateFormat("hh:mm a");
         DateFormat dateView = new SimpleDateFormat("EEEE, dd MMMM yyyy");
         String day =  dateView.format(date);
         String time = timeView.format(date);  
@@ -17,7 +17,7 @@ public class FoodCourtLogo {
         System.out.println("/___,' \\__,_|_| |_|  \\___/ \\__,_|_|_|___\\/   \\___/ \\___/ \\__,_\\____/\\___/ \\__,_|_|   \\__|");
         System.out.println("                                   |_____|                                               ");
         System.out.println("===========================================================================================");
-        System.out.println(" Now Time: " + time  + "                                       Date: " + day);
+        System.out.println(" Now Time: " + time  + "                                         Date: " + day);
         System.out.println("===========================================================================================");
     }
     
