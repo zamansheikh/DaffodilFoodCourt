@@ -19,11 +19,49 @@ public class Menu {
         System.out.println("\tPlease enter your choice: ");
         System.out.print("\t$ ");
         Scanner sc = new Scanner(System.in);
+        Scanner sc1 = new Scanner(System.in);
         int c = sc.nextInt();
-        if(c == 1); //feature 1
+        if(c == 1){
+            Employee.employeeMenu();
+            ArrayList<Employee> list = new ArrayList<Employee>();
+            int choice = sc.nextInt();
+            
+            if(choice == 1){
+                System.out.print("\tEnter Employee Name\n\t$ ");
+                String name = sc1.nextLine();
+                System.out.print("\tEnter Employee ID\n\t$ ");
+                String empId = sc1.nextLine();
+                System.out.print("\tEnter Employee Salary\n\t$ ");
+                double salary = sc1.nextDouble();
+                sc.nextLine();
+                list.add(new Employee(name, empId, salary));
+                try {
+                    ESaveLoad.writeObj(list);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if(choice == 4){
+                try {
+                    list = ESaveLoad.loadObj();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                for(Employee e: list){
+                    //System.out.println(e);
+                    System.out.println("\tEnployee Name: " + e.getName());
+                    System.out.println("\tEmployee ID: " + e.getEmpId());
+                    System.out.println("\tEmployee Salary: " + e.getSalary());
+                }
+                //wait for press enter
+                System.out.println("\tPress Enter to continue...");
+                sc1.nextLine();
+            }
+
+        } //feature 1
         else if (c == 2); //feature 2
         else if (c == 3);//feature 3
-        else if (c == 4); //feature 4
+        else if (c == 4);
         else if (c == 0) return false;
         else {
             System.out.println("\tInvalid choice!");

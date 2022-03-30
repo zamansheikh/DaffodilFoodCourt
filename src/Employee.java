@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Employee {
+public class Employee implements Serializable{
     private String name;
 	private String empId;
 	private double salary;
@@ -10,7 +11,10 @@ public class Employee {
 		this.empId = empId;
 		this.salary = salary;
 	}
-	
+	//toString method
+	public String toString() {
+		return "Employee [name=" + name + ", empId=" + empId + ", salary=" + salary + "]";
+	}
 	public void setName(String name)
 	{
 		this.name = name;
@@ -36,29 +40,29 @@ public class Employee {
 	{
 		return salary;
 	}
-    public boolean insert(){
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\tEnter Employee Name\n\t$ ");
-		String name = sc.nextLine();
-		System.out.println("\tEnter Employee ID\n\t$ ");
-		String empId = sc.nextLine();
-		System.out.println("\tEnter Employee Salary\n\t$ ");
-		double salary = sc.nextDouble();
-		sc.nextLine();
-		String content = name + "," + empId + "," + salary;
-		FileSave.writeA("lib\\Employee.txt", content);
-		return true;
+	public static void employeeMenu(){
+		System.out.println("\t1. Add Employee");
+		System.out.println("\t2. Remove Employee");
+		System.out.println("\t3. Update Employee");
+		System.out.println("\t4. Display Employee");
+		System.out.println("\t5. Exit");
+		System.out.print("\tEnter your choice: ");
 	}
-	public boolean view(){
-		String content = FileSave.read("lib\\Employee.txt", new ArrayList<String>());
-		String[] lines = content.split("\n");
-		for(int i = 0; i < lines.length; i++){
-			String[] data = lines[i].split(",");
-			System.out.println("\tName: " + data[0]);
-			System.out.println("\tID: " + data[1]);
-			System.out.println("\tSalary: " + data[2]);
-		}
-		return true;
-	}
+    // public boolean insert(){
+	// 	Scanner sc = new Scanner(System.in);
+	// 	System.out.println("\tEnter Employee Name\n\t$ ");
+	// 	String name = sc.nextLine();
+	// 	System.out.println("\tEnter Employee ID\n\t$ ");
+	// 	String empId = sc.nextLine();
+	// 	System.out.println("\tEnter Employee Salary\n\t$ ");
+	// 	double salary = sc.nextDouble();
+	// 	sc.nextLine();
+	// 	String content = name + "," + empId + "," + salary;
+	// 	FileSave.writeA("lib\\Employee.txt", content);
+	// 	return true;
+	// }
+	
+	
+	
 }
 
