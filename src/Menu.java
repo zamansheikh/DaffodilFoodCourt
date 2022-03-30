@@ -20,42 +20,98 @@ public class Menu {
         System.out.print("\t$ ");
         Scanner sc = new Scanner(System.in);
         Scanner sc1 = new Scanner(System.in);
+        
         int c = sc.nextInt();
         if(c == 1){
-            Employee.employeeMenu();
-            ArrayList<Employee> list = new ArrayList<Employee>();
-            int choice = sc.nextInt();
-            
-            if(choice == 1){
-                System.out.print("\tEnter Employee Name\n\t$ ");
-                String name = sc1.nextLine();
-                System.out.print("\tEnter Employee ID\n\t$ ");
-                String empId = sc1.nextLine();
-                System.out.print("\tEnter Employee Salary\n\t$ ");
-                double salary = sc1.nextDouble();
-                sc.nextLine();
-                list.add(new Employee(name, empId, salary));
-                try {
-                    ESaveLoad.writeObj(list);
-                } catch (Exception e) {
-                    e.printStackTrace();
+            boolean eLoop = true;
+            while(eLoop)
+            {
+                Employee.employeeMenu();
+                ArrayList<Employee> list = new ArrayList<Employee>();
+                int choice = sc.nextInt();
+                
+                if(choice == 1){
+                    System.out.print("\tEnter Employee Name\n\t$ ");
+                    String name = sc1.nextLine();
+                    System.out.print("\tEnter Employee ID\n\t$ ");
+                    String empId = sc1.nextLine();
+                    System.out.print("\tEnter Employee Salary\n\t$ ");
+                    double salary = sc1.nextDouble();
+                    sc.nextLine();
+                    try {
+                        list = ESaveLoad.loadObj();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    list.add(new Employee(name, empId, salary));
+                    try {
+                        ESaveLoad.writeObj(list);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            if(choice == 4){
-                try {
-                    list = ESaveLoad.loadObj();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (choice == 2){
+                    //remove employee
+                    System.out.print("\tEnter Employee ID\n\t$ ");
+                    String empId = sc1.nextLine();
+                    try {
+                        list = ESaveLoad.loadObj();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for(int i = 0; i < list.size(); i++){
+                        if(list.get(i).getEmpId().equals(empId)){
+                            list.remove(i);
+                            System.out.println("\tEmployee removed successfully");
+                        }
+                        else{
+                            System.out.println("\tEmployee not found");
+                        }
+                    }
+                    try {
+                        ESaveLoad.writeObj(list);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("\tPress any key to continue...");
+                    sc1.nextLine();
                 }
-                for(Employee e: list){
-                    //System.out.println(e);
-                    System.out.println("\tEnployee Name: " + e.getName());
-                    System.out.println("\tEmployee ID: " + e.getEmpId());
-                    System.out.println("\tEmployee Salary: " + e.getSalary());
+                if(choice == 3){
+                    //Seach employee
+                    System.out.print("\tEnter Employee ID\n\t$ ");
+                    String empId = sc1.nextLine();
+                    try {
+                        list = ESaveLoad.loadObj();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for(Employee e : list){
+                        if(e.getEmpId().equals(empId)){
+                            System.out.println(e);
+                        }
+                    }
+
                 }
-                //wait for press enter
-                System.out.println("\tPress Enter to continue...");
-                sc1.nextLine();
+                if(choice == 4){
+                    try {
+                        list = ESaveLoad.loadObj();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for(Employee e: list){
+                        //System.out.println(e);
+                        System.out.println("\tEnployee Name: " + e.getName());
+                        System.out.println("\tEmployee ID: " + e.getEmpId());
+                        System.out.println("\tEmployee Salary: " + e.getSalary());
+                    }
+                    //wait for press enter
+                    System.out.println("\tPress Enter to continue...");
+                    sc1.nextLine();
+                }
+                if(choice == 5){
+                    //back
+                    eLoop = false;
+                }
             }
 
         } //feature 1

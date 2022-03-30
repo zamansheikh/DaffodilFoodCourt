@@ -41,11 +41,12 @@ public class Employee implements Serializable{
 		return salary;
 	}
 	public static void employeeMenu(){
+		System.out.println("Employee Menu: ");
 		System.out.println("\t1. Add Employee");
 		System.out.println("\t2. Remove Employee");
-		System.out.println("\t3. Update Employee");
+		System.out.println("\t3. Search Employee");
 		System.out.println("\t4. Display Employee");
-		System.out.println("\t5. Exit");
+		System.out.println("\t5. Back");
 		System.out.print("\tEnter your choice: ");
 	}
     // public boolean insert(){

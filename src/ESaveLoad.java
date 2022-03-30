@@ -10,6 +10,14 @@ public class ESaveLoad {
         oos.close();
 
     }
+    public static void writeObjA(ArrayList<Employee> list) throws Exception{
+        File file = new File("lib\\Employee.txt");
+        ObjectOutputStream oos = null;
+        oos = new ObjectOutputStream( new FileOutputStream(file, true));
+        oos.writeObject(list);
+        oos.close();
+
+    }
     public static ArrayList<Employee> loadObj(){
         try {
             File file = new File("lib\\Employee.txt");
