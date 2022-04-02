@@ -6,14 +6,14 @@ import java.util.Date;
 import java.util.*;
 
 public class Menu {
-    public static boolean mainMenu(){
+    public static boolean adminMenu(){
         
         logo();
         stats();
         System.out.println("Main Menu: ");
         System.out.println("\t1. Employee");
-        System.out.println("\t2. Food");
-        System.out.println("\t3. Order");
+        System.out.println("\t2. Add Food");
+        System.out.println("\t3. OrderView");
         System.out.println("\t4. Statistics");
         System.out.println("\t0. Exit");
         System.out.println("\tPlease enter your choice: ");
@@ -29,7 +29,6 @@ public class Menu {
                 Employee.employeeMenu();
                 ArrayList<Employee> list = new ArrayList<Employee>();
                 int choice = sc.nextInt();
-                
                 if(choice == 1){
                     System.out.print("\tEnter Employee Name\n\t$ ");
                     String name = sc1.nextLine();
@@ -39,13 +38,13 @@ public class Menu {
                     double salary = sc1.nextDouble();
                     sc.nextLine();
                     try {
-                        list = ESaveLoad.loadObj();
+                        list = Main.loadObj();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     list.add(new Employee(name, empId, salary));
                     try {
-                        ESaveLoad.writeObj(list);
+                        Main.writeObj(list);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -55,7 +54,7 @@ public class Menu {
                     System.out.print("\tEnter Employee ID\n\t$ ");
                     String empId = sc1.nextLine();
                     try {
-                        list = ESaveLoad.loadObj();
+                        list = Main.loadObj();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -69,7 +68,7 @@ public class Menu {
                         }
                     }
                     try {
-                        ESaveLoad.writeObj(list);
+                        Main.writeObj(list);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -81,7 +80,7 @@ public class Menu {
                     System.out.print("\tEnter Employee ID\n\t$ ");
                     String empId = sc1.nextLine();
                     try {
-                        list = ESaveLoad.loadObj();
+                        list = Main.loadObj();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -94,7 +93,7 @@ public class Menu {
                 }
                 if(choice == 4){
                     try {
-                        list = ESaveLoad.loadObj();
+                        list = Main.loadObj();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -126,6 +125,21 @@ public class Menu {
         return true;
     }
 
+    //user Menu static method is under maintanaance
+    public static boolean userMenu(){
+        
+        logo();
+        stats();
+        System.out.println("Main Menu: ");
+        System.out.println("\t1. Order");
+        System.out.println("\t2. Print Receipt");
+        System.out.println("\t3. OrderView");
+        System.out.println("\t0. Exit");
+        System.out.println("\tPlease enter your choice: ");
+        System.out.print("\t$ ");
+          return true;
+    }
+
     public static void logo(){
         Date date = Calendar.getInstance().getTime();
         DateFormat timeView = new SimpleDateFormat("hh:mm a");
@@ -146,7 +160,7 @@ public class Menu {
 
     public static void stats(){
         System.out.println("-------------------------------------------------------------------------------------------");
-        System.out.println("|   Total Employe : 20                                              Total Resturent: 03    |");
+        System.out.println("|   Total Employe : "+ Statistics.eNumberCount() +"                                               Total Resturent: 03    |");
         System.out.println("|   Total Food    : 20                                              Total Food Item: 10    |");
         System.out.println("|   Total Order   : 20                                              Total Order Item: 10   |");
         System.out.println("|   Total Revenue : 20                                              Total Revenue: $20.00  |");
