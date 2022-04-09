@@ -46,7 +46,7 @@ public class Employee implements Serializable{
 		System.out.println("\t2. Remove Employee");
 		System.out.println("\t3. Search Employee");
 		System.out.println("\t4. Display Employee");
-		System.out.println("\t5. Back");
+		System.out.println("\t0. Back");
 		System.out.print("\tEnter your choice: ");
 	}
     // public boolean insert(){

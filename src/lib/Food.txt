@@ -7,3 +7,6 @@ Pizza
 Hotdog
 120.0
 20
+Sandwitch
+70.0
+20

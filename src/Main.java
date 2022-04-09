@@ -6,7 +6,9 @@ public class Main {
             while(Menu.adminMenu());
         }
         else{
-            while(Menu.userMenu());
+            ArrayList<Order> o = new ArrayList<>();
+            Order.orderLoad(o);
+            while(Menu.userMenu(o));
         }
     }
     public static boolean auth(){
@@ -37,14 +39,14 @@ public class Main {
         oos.writeObject(list);
         oos.close();
     }
-    public static void writeObjA(ArrayList<Employee> list) throws Exception{
-        File file = new File("lib\\Employee.txt");
-        ObjectOutputStream oos = null;
-        oos = new ObjectOutputStream( new FileOutputStream(file, true));
-        oos.writeObject(list);
-        oos.close();
-
-    }
+//    public static void writeObjA(ArrayList<Employee> list) throws Exception{
+//        File file = new File("lib\\Employee.txt");
+//        ObjectOutputStream oos = null;
+//        oos = new ObjectOutputStream( new FileOutputStream(file, true));
+//        oos.writeObject(list);
+//        oos.close();
+//
+//    }
     public static ArrayList<Employee> loadObj(){
         try {
             File file = new File("lib\\Employee.txt");
